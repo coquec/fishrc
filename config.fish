@@ -11,6 +11,10 @@ if status is-interactive
     # Permitimos que less procese algunos archivos binarios.
     eval $(lesspipe)
 
+    if type -q podman
+        podman completion fish | source
+    end
+
     if not fish_is_root_user
         # Configuración para el snap de kubectl.
         alias "kubectl=snap run kubectl"
