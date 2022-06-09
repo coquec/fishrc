@@ -16,8 +16,13 @@ if status is-interactive
     end
 
     if not fish_is_root_user
-        # Configuración para el snap de kubectl.
-        alias "kubectl=snap run kubectl"
+        # kubectl puede ser un ejecutable local o estar dentro de minikube.
+        if not type -q kubectl
+            if type -q minikube
+                alias kubectl="minikube kubectl --"
+            end
+        end
+
         kubectl completion fish | source
     end
 end
