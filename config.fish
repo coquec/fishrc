@@ -9,7 +9,7 @@ if status is-interactive
     set -g fish_escape_delay_ms 500
 
     # Permitimos que less procese algunos archivos binarios.
-    eval $(lesspipe)
+    lesspipe | source
 
     if type -q podman
         podman completion fish | source
