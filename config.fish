@@ -23,6 +23,8 @@ if status is-interactive
             end
         end
 
-        kubectl completion fish | source
+        if type -q kubectl
+            kubectl completion fish | source
+        end
     end
 end
